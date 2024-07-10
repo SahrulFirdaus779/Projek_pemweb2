@@ -7,6 +7,7 @@ use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\JenisFaskesController;
 use App\Http\Controllers\KabkotaController;
 use App\Http\Controllers\FaskesController;
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -34,6 +35,10 @@ Route::get('/Labor', function () {
 Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/faskes/create', [LandingPageController::class, 'create'])->name('faskes.create');
+Route::post('/faskes', [LandingPageController::class, 'store'])->name('faskes.store');
+
 
 // Faskes Routes
 Route::prefix('faskes')->group(function () {
