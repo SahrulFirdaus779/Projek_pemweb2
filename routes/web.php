@@ -36,10 +36,6 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/faskes/create', [LandingPageController::class, 'create'])->name('faskes.create');
-Route::post('/faskes', [LandingPageController::class, 'store'])->name('faskes.store');
-
-
 // Faskes Routes
 Route::prefix('faskes')->group(function () {
     Route::get('/', [FaskesController::class, 'index'])->name('faskes.index');
